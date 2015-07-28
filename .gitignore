@@ -1,0 +1,26 @@
+# Eclipse project files
+=======
+*/target/
+target/
+.project
+.classpath
+.settings/
+.metadata/
+
+# Idea project files
+.idea
+*.iml
+dependency-reduced-pom.xml
+
+# OS generated files #
+######################
+.DS_Store*
+.DS_Store
+._*
+.Spotlight*
+.Trash*
+*humbs.db
+
+# Log
+*.log
+
