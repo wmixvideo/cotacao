@@ -52,4 +52,13 @@ public class WSConsultaTest {
         final LocalDate data = LocalDate.now().plusDays(1);
         Assert.assertNull(new WSConsulta().getCotacao(Moeda.IENE_COMPRA, data));
     }
+
+    @Test
+    public void garanteQueTodasAsMoedasEstaoOperacionais() throws Exception {
+        final LocalDate data = LocalDate.of(2015, 9, 18);
+        final WSConsulta wsConsulta = new WSConsulta();
+        for (Moeda moeda : Moeda.values()) {
+            Assert.assertNotNull(wsConsulta.getCotacao(moeda, data));
+        }
+    }
 }
