@@ -3,7 +3,8 @@ Sistema para busca de cotações do Banco Central do Brasil
 
 [![Build Status](https://api.travis-ci.org/fincatto/cotacao.png)](http://travis-ci.org/#!/fincatto/cotacao)
 
-## Exemplos
+## Exemplos de uso
+
 ### Consulta de Dolar
 new WSConsulta().getCotacao(Moeda.DOLAR_VENDA, LocalDate.of(2015, 7, 27))
 
