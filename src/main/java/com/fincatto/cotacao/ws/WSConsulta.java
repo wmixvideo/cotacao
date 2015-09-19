@@ -1,7 +1,7 @@
 package com.fincatto.cotacao.ws;
 
-import com.fincatto.cotacao.modelo.Cotacao;
-import com.fincatto.cotacao.modelo.Moeda;
+import com.fincatto.cotacao.classes.Cotacao;
+import com.fincatto.cotacao.classes.Moeda;
 import com.fincatto.cotacao.ws.comum.WSValorSerieVO;
 import com.fincatto.cotacao.ws.servicos.FachadaWSSGS;
 import com.fincatto.cotacao.ws.servicos.FachadaWSSGSProxy;
@@ -16,34 +16,29 @@ import java.util.List;
 
 public class WSConsulta {
 
-    private static final String DATE_PATTERN = "dd/MM/yyyy";
-    private final FachadaWSSGS fachada;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final FachadaWSSGS FACHADA = new FachadaWSSGSProxy();
 
-    public WSConsulta() {
-        this.fachada = new FachadaWSSGSProxy();
-    }
-
-    public Cotacao getCotacao(final Moeda moeda, final LocalDate data) throws Exception {
+    public Cotacao getCotacao(final Moeda moeda, final LocalDate data) {
         try {
-            final BigDecimal valor = fachada.getValor(moeda.getCodigo(), DateTimeFormatter.ofPattern(DATE_PATTERN).format(data));
+            final BigDecimal valor = FACHADA.getValor(moeda.getCodigo(), FORMATTER.format(data));
             return new Cotacao(data, moeda, valor);
         } catch (RemoteException e) {
             return null;
         }
     }
 
-    public List<Cotacao> getCotacao(final Moeda moeda, final LocalDate dataInicio, final LocalDate dataFim) throws Exception {
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-        final long[] moedas = {moeda.getCodigo()};
-        final List<Cotacao> cotacoes = new ArrayList<>();
+    public List<Cotacao> getCotacao(final Moeda moeda, final LocalDate dataInicio, final LocalDate dataFim) {
         try {
-            for (WSValorSerieVO valorSerieVO : fachada.getValoresSeriesVO(moedas, formatter.format(dataInicio), formatter.format(dataFim))[0].getValores()) {
-                cotacoes.add(new Cotacao(LocalDate.of(valorSerieVO.getAno(), valorSerieVO.getMes(), valorSerieVO.getDia()), moeda, valorSerieVO.getValor()));
+            final long[] moedas = {moeda.getCodigo()};
+            final List<Cotacao> cotacoes = new ArrayList<>();
+            for (WSValorSerieVO valorSerieVO : FACHADA.getValoresSeriesVO(moedas, FORMATTER.format(dataInicio), FORMATTER.format(dataFim))[0].getValores()) {
+                final LocalDate data = LocalDate.of(valorSerieVO.getAno(), valorSerieVO.getMes(), valorSerieVO.getDia());
+                cotacoes.add(new Cotacao(data, moeda, valorSerieVO.getValor()));
             }
             return cotacoes;
         } catch (RemoteException e) {
             return Collections.EMPTY_LIST;
         }
-
     }
 }

@@ -1,4 +1,4 @@
-package com.fincatto.cotacao.modelo;
+package com.fincatto.cotacao.classes;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

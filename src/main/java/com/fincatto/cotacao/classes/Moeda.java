@@ -1,4 +1,4 @@
-package com.fincatto.cotacao.modelo;
+package com.fincatto.cotacao.classes;
 
 public enum Moeda {
     DOLAR_VENDA(1, "D\u00f3lar (venda)"),
