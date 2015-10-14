@@ -1,7 +1,8 @@
 # Cotacao
 Sistema para busca de cotações do Banco Central do Brasil
 
-[![Build Status](https://api.travis-ci.org/fincatto/cotacao.png)](http://travis-ci.org/#!/fincatto/cotacao)
+[![Build Status](https://api.travis-ci.org/wmixvideo/cotacao.png)](http://travis-ci.org/#!/wmixvideo/cotacao)
+[![Coverage Status](https://coveralls.io/repos/wmixvideo/cotacao/badge.svg?branch=master&service=github)](https://coveralls.io/github/wmixvideo/cotacao?branch=master)
 
 ## Exemplos de uso
 
