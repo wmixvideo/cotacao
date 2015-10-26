@@ -35,7 +35,6 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -74,6 +73,14 @@
         </testResources>
 
         <plugins>
+	    <plugin>
+		<groupId>org.eluder.coveralls</groupId>
+		 <artifactId>coveralls-maven-plugin</artifactId>
+		<version>4.0.0</version>
+		<configuration>
+		<repoToken>VvE1qpIWr2Kq805t5YU583RyHfJzg4tnQ</repoToken>
+	        </configuration>
+	    </plugin>
             <plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
