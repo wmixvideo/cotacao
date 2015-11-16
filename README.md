@@ -1,5 +1,6 @@
 # Cotacao
-Sistema para busca de cotações do Banco Central do Brasil
+Sistema para busca de índices e cotações de moedas do Banco Central do Brasil.
+Para uma listagem completa das moedas e índices suportados, veja a lista: http://egas.digital/cotacoes.txt
 
 [![Build Status](https://api.travis-ci.org/wmixvideo/cotacao.png)](http://travis-ci.org/#!/wmixvideo/cotacao)
 [![Coverage Status](https://coveralls.io/repos/wmixvideo/cotacao/badge.svg?branch=master&service=github)](https://coveralls.io/github/wmixvideo/cotacao?branch=master)
@@ -7,10 +8,10 @@ Sistema para busca de cotações do Banco Central do Brasil
 ## Exemplos de uso
 
 ### Consulta de Dolar
-new WSConsulta().getCotacao(Moeda.DOLAR_VENDA, LocalDate.of(2015, 7, 27))
+new WSConsulta().getCotacao(Indice.DOLAR_VENDA, LocalDate.of(2015, 7, 27))
 
 ##Consulta de Euro
-new WSConsulta().getCotacao(Moeda.EURO_COMPRA, LocalDate.of(2015, 7, 27))
+new WSConsulta().getCotacao(Indice.EURO_COMPRA, LocalDate.of(2015, 7, 27))
 
-##Consulta de Coroa Sueca
-new WSConsulta().getCotacao(Moeda.COROA_SUECA_COMPRA, LocalDate.of(2015, 7, 27))
+##Consulta dO IGPM
+new WSConsulta().getCotacao(Indice.IGPM, LocalDate.of(2015, 7, 27))

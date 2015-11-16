@@ -3,6 +3,7 @@ package com.fincatto.cotacao.classes;
 /**
  * Representa um indice de consulta de valores no Banco Central do Brasil.
  * Para ver o indice completo de moedas suportadas, veja o arquivo indices.txt na pasta resources.
+ * Esse arquivo foi tirado de: http://egas.digital/cotacoes.txtAtualizad
  */
 public enum Indice {
 
