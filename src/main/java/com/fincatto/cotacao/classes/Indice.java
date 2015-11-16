@@ -15,7 +15,8 @@ public enum Indice {
 
     //indices
     IGPM(189, "IGP-M"),
-    OURO_BMF(4, "Ouro BMF");
+    OURO_BMF(4, "Ouro BMF"),
+    SELIC(11, "Selic");
 
 
     private final long codigo;
