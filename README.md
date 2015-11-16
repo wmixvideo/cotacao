@@ -1,5 +1,6 @@
 # Cotacao
 Sistema para busca de índices e cotações de moedas do Banco Central do Brasil.
+
 Para uma listagem completa das moedas e índices suportados, veja a lista: http://egas.digital/cotacoes.txt
 
 [![Build Status](https://api.travis-ci.org/wmixvideo/cotacao.png)](http://travis-ci.org/#!/wmixvideo/cotacao)
