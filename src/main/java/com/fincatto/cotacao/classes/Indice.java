@@ -4,7 +4,7 @@ package com.fincatto.cotacao.classes;
  * Representa um indice de consulta de valores no Banco Central do Brasil.
  * Para ver o indice completo de moedas suportadas, veja o arquivo indices.txt na pasta resources.
  */
-public enum Moeda {
+public enum Indice {
 
     //moedas
     DOLAR_VENDA(1, "D\u00f3lar (venda)"),
@@ -18,7 +18,7 @@ public enum Moeda {
     private final long codigo;
     private final String descricao;
 
-    Moeda(final long codigo, final String descricao) {
+    Indice(final long codigo, final String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -29,5 +29,14 @@ public enum Moeda {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Indice{");
+        sb.append("codigo=").append(codigo);
+        sb.append(", descricao='").append(descricao).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

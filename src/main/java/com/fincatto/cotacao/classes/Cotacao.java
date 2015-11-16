@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class Cotacao {
 
-    private final Moeda moeda;
+    private final Indice indice;
     private final LocalDate data;
     private final BigDecimal valor;
 
-    public Cotacao(final LocalDate data, final Moeda moeda, final BigDecimal valor) {
+    public Cotacao(final LocalDate data, final Indice indice, final BigDecimal valor) {
         this.data = data;
-        this.moeda = moeda;
+        this.indice = indice;
         this.valor = valor;
     }
 
@@ -20,8 +20,8 @@ public class Cotacao {
         return data;
     }
 
-    public Moeda getMoeda() {
-        return moeda;
+    public Indice getIndice() {
+        return indice;
     }
 
     public BigDecimal getValor() {
@@ -33,21 +33,21 @@ public class Cotacao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Cotacao cotacao = (Cotacao) o;
-        return moeda == cotacao.moeda &&
+        return indice == cotacao.indice &&
                 Objects.equals(data, cotacao.data) &&
                 Objects.equals(valor, cotacao.valor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moeda, data, valor);
+        return Objects.hash(indice, data, valor);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cotacao{");
         sb.append("data=").append(data);
-        sb.append(", moeda=").append(moeda);
+        sb.append(", indice=").append(indice);
         sb.append(", valor=").append(valor);
         sb.append('}');
         return sb.toString();
