@@ -14,7 +14,9 @@ public enum Indice {
     EURO_COMPRA(21620, "Euro (compra)"),
 
     //indices
-    IGPM(189, "IGP-M");
+    IGPM(189, "IGP-M"),
+    OURO_BMF(4, "Ouro BMF");
+
 
     private final long codigo;
     private final String descricao;
