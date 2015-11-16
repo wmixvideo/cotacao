@@ -14,5 +14,11 @@ new WSConsulta().getCotacao(Indice.DOLAR_VENDA, LocalDate.of(2015, 7, 27))
 ##Consulta de Euro
 new WSConsulta().getCotacao(Indice.EURO_COMPRA, LocalDate.of(2015, 7, 27))
 
-##Consulta dO IGPM
+##Consulta do IGPM
 new WSConsulta().getCotacao(Indice.IGPM, LocalDate.of(2015, 7, 27))
+
+##Consulta de Ouro
+new WSConsulta().getCotacao(Indice.OURO_BMF, LocalDate.of(2015, 7, 27))
+
+##Consulta da Selic
+new WSConsulta().getCotacao(Indice.SELIC, LocalDate.of(2015, 7, 27))
