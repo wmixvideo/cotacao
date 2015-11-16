@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Cotacao {
+public class Cotacao implements Comparable<Cotacao> {
 
     private final Indice indice;
     private final LocalDate data;
@@ -51,5 +51,14 @@ public class Cotacao {
         sb.append(", valor=").append(valor);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(final Cotacao cotacao) {
+        final int indiceCompareResult = this.indice.getDescricao().compareTo(cotacao.getIndice().getDescricao());
+        if (indiceCompareResult == 0) {
+            return this.data.compareTo(cotacao.getData());
+        }
+        return indiceCompareResult;
     }
 }

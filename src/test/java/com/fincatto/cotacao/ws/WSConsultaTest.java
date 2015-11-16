@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedSet;
 
 public class WSConsultaTest {
 
@@ -21,7 +22,7 @@ public class WSConsultaTest {
     }
 
     @Test
-    public void testDeveRetornarAsCotacoesPorPeriodo() {
+    public void testDeveRetornarAsCotacoesPorPeriodo() throws RemoteException {
         final List<Cotacao> cotacoesEsperadas = new ArrayList<>();
         cotacoesEsperadas.add(new Cotacao(LocalDate.of(2015, 7, 13), Indice.EURO_COMPRA, new BigDecimal("3.4807000")));
         cotacoesEsperadas.add(new Cotacao(LocalDate.of(2015, 7, 14), Indice.EURO_COMPRA, new BigDecimal("3.4390000")));
@@ -32,7 +33,7 @@ public class WSConsultaTest {
     }
 
     @Test
-    public void testDeveIgnorarFinalDeSemana() {
+    public void testDeveIgnorarFinalDeSemana() throws RemoteException {
         Assert.assertEquals(2, new WSConsulta().getCotacao(Indice.DOLAR_VENDA, LocalDate.of(2015, 7, 17), LocalDate.of(2015, 7, 20)).size());
     }
 
@@ -75,8 +76,15 @@ public class WSConsultaTest {
     @Test
     public void testBuscaIndiceIGPMPeriodo() throws RemoteException {
         final WSConsulta wsConsulta = new WSConsulta();
-        final List<Cotacao> cotacoes = wsConsulta.getCotacao(Indice.IGPM, LocalDate.of(2014, 1, 1), LocalDate.of(2014, 12, 31));
+        final SortedSet<Cotacao> cotacoes = wsConsulta.getCotacao(Indice.IGPM, LocalDate.of(2014, 1, 1), LocalDate.of(2014, 12, 31));
         Assert.assertNotNull(cotacoes);
         Assert.assertEquals(cotacoes.size(), 12);
+    }
+
+    @Test
+    public void testGaranteOrdemDatas() throws RemoteException {
+        final SortedSet<Cotacao> cotacoes = new WSConsulta().getCotacao(Indice.EURO_COMPRA, LocalDate.of(2015, 7, 13), LocalDate.of(2015, 7, 17));
+        Assert.assertEquals(LocalDate.of(2015, 7, 13), cotacoes.first().getData());
+        Assert.assertEquals(LocalDate.of(2015, 7, 17), cotacoes.last().getData());
     }
 }

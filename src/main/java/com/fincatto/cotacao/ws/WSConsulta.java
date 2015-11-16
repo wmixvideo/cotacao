@@ -10,9 +10,8 @@ import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class WSConsulta {
 
@@ -28,17 +27,13 @@ public class WSConsulta {
         }
     }
 
-    public List<Cotacao> getCotacao(final Indice indice, final LocalDate dataInicio, final LocalDate dataFim) {
-        try {
-            final long[] moedas = {indice.getCodigo()};
-            final List<Cotacao> cotacoes = new ArrayList<>();
-            for (WSValorSerieVO valorSerieVO : FACHADA.getValoresSeriesVO(moedas, FORMATTER.format(dataInicio), FORMATTER.format(dataFim))[0].getValores()) {
-                final LocalDate data = LocalDate.of(valorSerieVO.getAno(), valorSerieVO.getMes(), valorSerieVO.getDia());
-                cotacoes.add(new Cotacao(data, indice, valorSerieVO.getValor()));
-            }
-            return cotacoes;
-        } catch (RemoteException e) {
-            return Collections.EMPTY_LIST;
+    public SortedSet<Cotacao> getCotacao(final Indice indice, final LocalDate dataInicio, final LocalDate dataFim) throws RemoteException {
+        final SortedSet<Cotacao> cotacoes = new TreeSet();
+        final long[] moedas = {indice.getCodigo()};
+        for (WSValorSerieVO valorSerieVO : FACHADA.getValoresSeriesVO(moedas, FORMATTER.format(dataInicio), FORMATTER.format(dataFim))[0].getValores()) {
+            final LocalDate data = LocalDate.of(valorSerieVO.getAno(), valorSerieVO.getMes(), valorSerieVO.getDia());
+            cotacoes.add(new Cotacao(data, indice, valorSerieVO.getValor()));
         }
+        return cotacoes;
     }
 }
