@@ -42,4 +42,14 @@ public class Cotacao {
     public int hashCode() {
         return Objects.hash(moeda, data, valor);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Cotacao{");
+        sb.append("data=").append(data);
+        sb.append(", moeda=").append(moeda);
+        sb.append(", valor=").append(valor);
+        sb.append('}');
+        return sb.toString();
+    }
 }
