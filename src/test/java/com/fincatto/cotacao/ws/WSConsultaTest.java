@@ -87,4 +87,16 @@ public class WSConsultaTest {
         Assert.assertEquals(LocalDate.of(2015, 7, 13), cotacoes.first().getData());
         Assert.assertEquals(LocalDate.of(2015, 7, 17), cotacoes.last().getData());
     }
+
+    @Test
+    public void testBuscaCotacaoDolarMesCompletoDiasUteis() throws RemoteException {
+        final SortedSet<Cotacao> cotacoes = new WSConsulta().getCotacao(Indice.DOLAR_VENDA, LocalDate.of(2015, 10, 01), LocalDate.of(2015, 10, 31));
+        Assert.assertEquals(21, cotacoes.size());
+    }
+
+    @Test
+    public void testBuscaCotacaoIGPM5Anos() throws RemoteException {
+        final SortedSet<Cotacao> cotacoes = new WSConsulta().getCotacao(Indice.IGPM, LocalDate.of(2010, 10, 01), LocalDate.of(2015, 9, 30));
+        Assert.assertEquals(60, cotacoes.size());
+    }
 }
