@@ -6,29 +6,28 @@
 
 package com.fincatto.cotacao.ws.servicos;
 
+import java.net.URL;
+
 public class FachadaWSSGSServiceLocator extends org.apache.axis.client.Service implements FachadaWSSGSService {
 
-    private String FachadaWSSGS_address = "https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS";
-    private String FachadaWSSGSWSDDServiceName = "FachadaWSSGS";
+    private final String FachadaWSSGS_address = "https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS";
 
     public FachadaWSSGSServiceLocator() {
     }
 
-    public String getFachadaWSSGSWSDDServiceName() {
-        return FachadaWSSGSWSDDServiceName;
+    private String getFachadaWSSGSWSDDServiceName() {
+        return "FachadaWSSGS";
     }
 
     public FachadaWSSGS getFachadaWSSGS() throws javax.xml.rpc.ServiceException {
-        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(FachadaWSSGS_address);
+            return getFachadaWSSGS(new URL(FachadaWSSGS_address));
         } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
-        return getFachadaWSSGS(endpoint);
     }
 
-    public FachadaWSSGS getFachadaWSSGS(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public FachadaWSSGS getFachadaWSSGS(java.net.URL portAddress) {
         try {
             FachadaWSSGSSoapBindingStub stub = new FachadaWSSGSSoapBindingStub(portAddress, this);
             stub.setPortName(getFachadaWSSGSWSDDServiceName());
@@ -53,7 +52,7 @@ public class FachadaWSSGSServiceLocator extends org.apache.axis.client.Service i
         } catch (Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface.getName()));
     }
 
     /**

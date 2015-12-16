@@ -11,11 +11,11 @@ import com.fincatto.cotacao.ws.comum.WSValorSerieVO;
 
 public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub implements FachadaWSSGS {
 
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
-    private java.util.Vector cachedSerQNames = new java.util.Vector();
-    private java.util.Vector cachedSerFactories = new java.util.Vector();
-    private java.util.Vector cachedDeserFactories = new java.util.Vector();
-    static org.apache.axis.description.OperationDesc[] _operations;
+    private final java.util.Vector cachedSerClasses = new java.util.Vector();
+    private final java.util.Vector cachedSerQNames = new java.util.Vector();
+    private final java.util.Vector cachedSerFactories = new java.util.Vector();
+    private final java.util.Vector cachedDeserFactories = new java.util.Vector();
+    private static final org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[7];
@@ -119,70 +119,42 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
         _operations[6] = oper;
     }
 
-    public FachadaWSSGSSoapBindingStub() throws org.apache.axis.AxisFault {
-        this(null);
-    }
-
     public FachadaWSSGSSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
         this(service);
         super.cachedEndpoint = endpointURL;
     }
 
-    public FachadaWSSGSSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    private FachadaWSSGSSoapBindingStub(javax.xml.rpc.Service service) {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
             super.service = service;
         }
         ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
-        Class cls;
-        javax.xml.namespace.QName qName;
-        javax.xml.namespace.QName qName2;
-        Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-        Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-        qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "ArrayOffWSSerieVO");
-        cachedSerQNames.add(qName);
-        cls = WSSerieVO[].class;
-        cachedSerClasses.add(cls);
-        qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSSerieVO");
-        qName2 = null;
-        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+
+        cachedSerQNames.add(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "ArrayOffWSSerieVO"));
+        cachedSerClasses.add(WSSerieVO[].class);
+        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSSerieVO"), null));
         cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
-
-        qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSSerieVO");
-        cachedSerQNames.add(qName);
-        cls = WSSerieVO.class;
-        cachedSerClasses.add(cls);
-        cachedSerFactories.add(beansf);
-        cachedDeserFactories.add(beandf);
-
-        qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSValorSerieVO");
-        cachedSerQNames.add(qName);
-        cls = WSValorSerieVO.class;
-        cachedSerClasses.add(cls);
-        cachedSerFactories.add(beansf);
-        cachedDeserFactories.add(beandf);
-
-        qName = new javax.xml.namespace.QName("http://DefaultNamespace", "ArrayOfflong");
-        cachedSerQNames.add(qName);
-        cls = long[].class;
-        cachedSerClasses.add(cls);
-        qName = new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long");
-        qName2 = null;
-        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+        cachedSerQNames.add(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSSerieVO"));
+        cachedSerClasses.add(WSSerieVO.class);
+        cachedSerFactories.add(org.apache.axis.encoding.ser.BeanSerializerFactory.class);
+        cachedDeserFactories.add(org.apache.axis.encoding.ser.BeanDeserializerFactory.class);
+        cachedSerQNames.add(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSValorSerieVO"));
+        cachedSerClasses.add(WSValorSerieVO.class);
+        cachedSerFactories.add(org.apache.axis.encoding.ser.BeanSerializerFactory.class);
+        cachedDeserFactories.add(org.apache.axis.encoding.ser.BeanDeserializerFactory.class);
+        cachedSerQNames.add(new javax.xml.namespace.QName("http://DefaultNamespace", "ArrayOfflong"));
+        cachedSerClasses.add(long[].class);
+        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), null));
         cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
-
-        qName = new javax.xml.namespace.QName("https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS", "ArrayOf_tns2_WSValorSerieVO");
-        cachedSerQNames.add(qName);
-        cls = WSValorSerieVO[].class;
-        cachedSerClasses.add(cls);
-        qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSValorSerieVO");
-        qName2 = null;
-        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+        cachedSerQNames.add(new javax.xml.namespace.QName("https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS", "ArrayOf_tns2_WSValorSerieVO"));
+        cachedSerClasses.add(WSValorSerieVO[].class);
+        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSValorSerieVO"), null));
         cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
     }
 
-    protected org.apache.axis.client.Call createCall() throws java.rmi.RemoteException {
+    private org.apache.axis.client.Call createCall() throws java.rmi.RemoteException {
         try {
             org.apache.axis.client.Call _call = super._createCall();
             if (super.maintainSessionSet) {

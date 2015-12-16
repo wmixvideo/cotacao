@@ -20,7 +20,7 @@ public class Cotacao implements Comparable<Cotacao> {
         return data;
     }
 
-    public Indice getIndice() {
+    private Indice getIndice() {
         return indice;
     }
 

@@ -1,11 +1,13 @@
 /**
  * WSValorSerieVO.java
- * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package com.fincatto.cotacao.ws.comum;
+
+import javax.jws.WebMethod;
+import java.math.BigDecimal;
 
 public class WSValorSerieVO implements java.io.Serializable {
     private int ano;
@@ -24,19 +26,7 @@ public class WSValorSerieVO implements java.io.Serializable {
     public WSValorSerieVO() {
     }
 
-    public WSValorSerieVO(
-            int ano,
-            int anoFim,
-            boolean bloqueado,
-            boolean bloqueioLiberado,
-            int dia,
-            int diaFim,
-            int mes,
-            int mesFim,
-            long oid,
-            long oidSerie,
-            String svalor,
-            java.math.BigDecimal valor) {
+    public WSValorSerieVO(int ano, int anoFim, boolean bloqueado, boolean bloqueioLiberado, int dia, int diaFim, int mes, int mesFim, long oid, long oidSerie, String svalor, BigDecimal valor) {
         this.ano = ano;
         this.anoFim = anoFim;
         this.bloqueado = bloqueado;
@@ -51,242 +41,110 @@ public class WSValorSerieVO implements java.io.Serializable {
         this.valor = valor;
     }
 
-
-    /**
-     * Gets the ano value for this WSValorSerieVO.
-     *
-     * @return ano
-     */
+    @WebMethod
     public int getAno() {
         return ano;
     }
 
-
-    /**
-     * Sets the ano value for this WSValorSerieVO.
-     *
-     * @param ano
-     */
     public void setAno(int ano) {
         this.ano = ano;
     }
 
-
-    /**
-     * Gets the anoFim value for this WSValorSerieVO.
-     *
-     * @return anoFim
-     */
+    @WebMethod
     public int getAnoFim() {
         return anoFim;
     }
 
-
-    /**
-     * Sets the anoFim value for this WSValorSerieVO.
-     *
-     * @param anoFim
-     */
     public void setAnoFim(int anoFim) {
         this.anoFim = anoFim;
     }
 
-
-    /**
-     * Gets the bloqueado value for this WSValorSerieVO.
-     *
-     * @return bloqueado
-     */
+    @WebMethod
     public boolean isBloqueado() {
         return bloqueado;
     }
 
-
-    /**
-     * Sets the bloqueado value for this WSValorSerieVO.
-     *
-     * @param bloqueado
-     */
     public void setBloqueado(boolean bloqueado) {
         this.bloqueado = bloqueado;
     }
 
-
-    /**
-     * Gets the bloqueioLiberado value for this WSValorSerieVO.
-     *
-     * @return bloqueioLiberado
-     */
+    @WebMethod
     public boolean isBloqueioLiberado() {
         return bloqueioLiberado;
     }
 
-
-    /**
-     * Sets the bloqueioLiberado value for this WSValorSerieVO.
-     *
-     * @param bloqueioLiberado
-     */
     public void setBloqueioLiberado(boolean bloqueioLiberado) {
         this.bloqueioLiberado = bloqueioLiberado;
     }
 
-
-    /**
-     * Gets the dia value for this WSValorSerieVO.
-     *
-     * @return dia
-     */
+    @WebMethod
     public int getDia() {
         return dia;
     }
 
-
-    /**
-     * Sets the dia value for this WSValorSerieVO.
-     *
-     * @param dia
-     */
     public void setDia(int dia) {
         this.dia = dia;
     }
 
-
-    /**
-     * Gets the diaFim value for this WSValorSerieVO.
-     *
-     * @return diaFim
-     */
+    @WebMethod
     public int getDiaFim() {
         return diaFim;
     }
 
-
-    /**
-     * Sets the diaFim value for this WSValorSerieVO.
-     *
-     * @param diaFim
-     */
     public void setDiaFim(int diaFim) {
         this.diaFim = diaFim;
     }
 
-
-    /**
-     * Gets the mes value for this WSValorSerieVO.
-     *
-     * @return mes
-     */
+    @WebMethod
     public int getMes() {
         return mes;
     }
 
-
-    /**
-     * Sets the mes value for this WSValorSerieVO.
-     *
-     * @param mes
-     */
     public void setMes(int mes) {
         this.mes = mes;
     }
 
-
-    /**
-     * Gets the mesFim value for this WSValorSerieVO.
-     *
-     * @return mesFim
-     */
+    @WebMethod
     public int getMesFim() {
         return mesFim;
     }
 
-
-    /**
-     * Sets the mesFim value for this WSValorSerieVO.
-     *
-     * @param mesFim
-     */
     public void setMesFim(int mesFim) {
         this.mesFim = mesFim;
     }
 
-
-    /**
-     * Gets the oid value for this WSValorSerieVO.
-     *
-     * @return oid
-     */
+    @WebMethod
     public long getOid() {
         return oid;
     }
 
-
-    /**
-     * Sets the oid value for this WSValorSerieVO.
-     *
-     * @param oid
-     */
     public void setOid(long oid) {
         this.oid = oid;
     }
 
-
-    /**
-     * Gets the oidSerie value for this WSValorSerieVO.
-     *
-     * @return oidSerie
-     */
+    @WebMethod
     public long getOidSerie() {
         return oidSerie;
     }
 
-
-    /**
-     * Sets the oidSerie value for this WSValorSerieVO.
-     *
-     * @param oidSerie
-     */
     public void setOidSerie(long oidSerie) {
         this.oidSerie = oidSerie;
     }
 
-
-    /**
-     * Gets the svalor value for this WSValorSerieVO.
-     *
-     * @return svalor
-     */
+    @WebMethod
     public String getSvalor() {
         return svalor;
     }
 
-
-    /**
-     * Sets the svalor value for this WSValorSerieVO.
-     *
-     * @param svalor
-     */
     public void setSvalor(String svalor) {
         this.svalor = svalor;
     }
 
-
-    /**
-     * Gets the valor value for this WSValorSerieVO.
-     *
-     * @return valor
-     */
+    @WebMethod
     public java.math.BigDecimal getValor() {
         return valor;
     }
 
-
-    /**
-     * Sets the valor value for this WSValorSerieVO.
-     *
-     * @param valor
-     */
     public void setValor(java.math.BigDecimal valor) {
         this.valor = valor;
     }
@@ -294,17 +152,19 @@ public class WSValorSerieVO implements java.io.Serializable {
     private Object __equalsCalc = null;
 
     public synchronized boolean equals(Object obj) {
-        if (!(obj instanceof WSValorSerieVO)) return false;
+        if (!(obj instanceof WSValorSerieVO)) {
+            return false;
+        }
         WSValorSerieVO other = (WSValorSerieVO) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-                this.ano == other.getAno() &&
+        _equals = this.ano == other.getAno() &&
                 this.anoFim == other.getAnoFim() &&
                 this.bloqueado == other.isBloqueado() &&
                 this.bloqueioLiberado == other.isBloqueioLiberado() &&
@@ -314,12 +174,8 @@ public class WSValorSerieVO implements java.io.Serializable {
                 this.mesFim == other.getMesFim() &&
                 this.oid == other.getOid() &&
                 this.oidSerie == other.getOidSerie() &&
-                ((this.svalor == null && other.getSvalor() == null) ||
-                        (this.svalor != null &&
-                                this.svalor.equals(other.getSvalor()))) &&
-                ((this.valor == null && other.getValor() == null) ||
-                        (this.valor != null &&
-                                this.valor.equals(other.getValor())));
+                ((this.svalor == null && other.getSvalor() == null) || (this.svalor != null && this.svalor.equals(other.getSvalor()))) &&
+                ((this.valor == null && other.getValor() == null) || (this.valor != null && this.valor.equals(other.getValor())));
         __equalsCalc = null;
         return _equals;
     }
@@ -353,8 +209,7 @@ public class WSValorSerieVO implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-            new org.apache.axis.description.TypeDesc(WSValorSerieVO.class, true);
+    private static final org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(WSValorSerieVO.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "WSValorSerieVO"));
@@ -431,36 +286,4 @@ public class WSValorSerieVO implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
     }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-            String mechType,
-            Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return
-                new org.apache.axis.encoding.ser.BeanSerializer(
-                        _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-            String mechType,
-            Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return
-                new org.apache.axis.encoding.ser.BeanDeserializer(
-                        _javaType, _xmlType, typeDesc);
-    }
-
 }

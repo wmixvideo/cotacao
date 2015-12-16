@@ -7,6 +7,8 @@
 
 package com.fincatto.cotacao.ws.comum;
 
+import javax.jws.WebMethod;
+
 public class WSSerieVO implements java.io.Serializable {
 
     private int anoFim;
@@ -94,6 +96,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return anoFim
      */
+    @WebMethod
     public int getAnoFim() {
         return anoFim;
     }
@@ -114,6 +117,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return anoInicio
      */
+    @WebMethod
     public int getAnoInicio() {
         return anoInicio;
     }
@@ -134,6 +138,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return aviso
      */
+    @WebMethod
     public String getAviso() {
         return aviso;
     }
@@ -154,6 +159,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return diaFim
      */
+    @WebMethod
     public int getDiaFim() {
         return diaFim;
     }
@@ -174,6 +180,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return diaInicio
      */
+    @WebMethod
     public int getDiaInicio() {
         return diaInicio;
     }
@@ -194,6 +201,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return especial
      */
+    @WebMethod
     public boolean isEspecial() {
         return especial;
     }
@@ -214,6 +222,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return fonte
      */
+    @WebMethod
     public String getFonte() {
         return fonte;
     }
@@ -234,6 +243,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return fullName
      */
+    @WebMethod
     public String getFullName() {
         return fullName;
     }
@@ -254,6 +264,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return gestorProprietario
      */
+    @WebMethod
     public String getGestorProprietario() {
         return gestorProprietario;
     }
@@ -274,6 +285,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return mesFim
      */
+    @WebMethod
     public int getMesFim() {
         return mesFim;
     }
@@ -294,6 +306,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return mesInicio
      */
+    @WebMethod
     public int getMesInicio() {
         return mesInicio;
     }
@@ -314,6 +327,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return nomeAbreviado
      */
+    @WebMethod
     public String getNomeAbreviado() {
         return nomeAbreviado;
     }
@@ -334,6 +348,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return nomeCompleto
      */
+    @WebMethod
     public String getNomeCompleto() {
         return nomeCompleto;
     }
@@ -354,6 +369,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return oid
      */
+    @WebMethod
     public long getOid() {
         return oid;
     }
@@ -374,6 +390,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return periodicidade
      */
+    @WebMethod
     public String getPeriodicidade() {
         return periodicidade;
     }
@@ -394,6 +411,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return periodicidadeSigla
      */
+    @WebMethod
     public String getPeriodicidadeSigla() {
         return periodicidadeSigla;
     }
@@ -414,6 +432,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return possuiBloqueios
      */
+    @WebMethod
     public boolean isPossuiBloqueios() {
         return possuiBloqueios;
     }
@@ -434,6 +453,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return publica
      */
+    @WebMethod
     public boolean isPublica() {
         return publica;
     }
@@ -454,6 +474,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return shortName
      */
+    @WebMethod
     public String getShortName() {
         return shortName;
     }
@@ -474,6 +495,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return ultimoValor
      */
+    @WebMethod
     public WSValorSerieVO getUltimoValor() {
         return ultimoValor;
     }
@@ -494,6 +516,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return unidadePadrao
      */
+    @WebMethod
     public String getUnidadePadrao() {
         return unidadePadrao;
     }
@@ -514,6 +537,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return unidadePadraoIngles
      */
+    @WebMethod
     public String getUnidadePadraoIngles() {
         return unidadePadraoIngles;
     }
@@ -534,6 +558,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return valorDiaNaoUtil
      */
+    @WebMethod
     public boolean isValorDiaNaoUtil() {
         return valorDiaNaoUtil;
     }
@@ -554,6 +579,7 @@ public class WSSerieVO implements java.io.Serializable {
      *
      * @return valores
      */
+    @WebMethod
     public WSValorSerieVO[] getValores() {
         return valores;
     }
@@ -573,64 +599,36 @@ public class WSSerieVO implements java.io.Serializable {
     public synchronized boolean equals(Object obj) {
         if (!(obj instanceof WSSerieVO)) return false;
         WSSerieVO other = (WSSerieVO) obj;
-        if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-                this.anoFim == other.getAnoFim() &&
+        _equals = this.anoFim == other.getAnoFim() &&
                 this.anoInicio == other.getAnoInicio() &&
-                ((this.aviso == null && other.getAviso() == null) ||
-                        (this.aviso != null &&
-                                this.aviso.equals(other.getAviso()))) &&
+                ((this.aviso == null && other.getAviso() == null) || (this.aviso != null && this.aviso.equals(other.getAviso()))) &&
                 this.diaFim == other.getDiaFim() &&
                 this.diaInicio == other.getDiaInicio() &&
                 this.especial == other.isEspecial() &&
-                ((this.fonte == null && other.getFonte() == null) ||
-                        (this.fonte != null &&
-                                this.fonte.equals(other.getFonte()))) &&
-                ((this.fullName == null && other.getFullName() == null) ||
-                        (this.fullName != null &&
-                                this.fullName.equals(other.getFullName()))) &&
-                ((this.gestorProprietario == null && other.getGestorProprietario() == null) ||
-                        (this.gestorProprietario != null &&
-                                this.gestorProprietario.equals(other.getGestorProprietario()))) &&
+                ((this.fonte == null && other.getFonte() == null) || (this.fonte != null && this.fonte.equals(other.getFonte()))) &&
+                ((this.fullName == null && other.getFullName() == null) || (this.fullName != null && this.fullName.equals(other.getFullName()))) &&
+                ((this.gestorProprietario == null && other.getGestorProprietario() == null) || (this.gestorProprietario != null && this.gestorProprietario.equals(other.getGestorProprietario()))) &&
                 this.mesFim == other.getMesFim() &&
                 this.mesInicio == other.getMesInicio() &&
-                ((this.nomeAbreviado == null && other.getNomeAbreviado() == null) ||
-                        (this.nomeAbreviado != null &&
-                                this.nomeAbreviado.equals(other.getNomeAbreviado()))) &&
-                ((this.nomeCompleto == null && other.getNomeCompleto() == null) ||
-                        (this.nomeCompleto != null &&
-                                this.nomeCompleto.equals(other.getNomeCompleto()))) &&
+                ((this.nomeAbreviado == null && other.getNomeAbreviado() == null) || (this.nomeAbreviado != null && this.nomeAbreviado.equals(other.getNomeAbreviado()))) &&
+                ((this.nomeCompleto == null && other.getNomeCompleto() == null) || (this.nomeCompleto != null && this.nomeCompleto.equals(other.getNomeCompleto()))) &&
                 this.oid == other.getOid() &&
-                ((this.periodicidade == null && other.getPeriodicidade() == null) ||
-                        (this.periodicidade != null &&
-                                this.periodicidade.equals(other.getPeriodicidade()))) &&
-                ((this.periodicidadeSigla == null && other.getPeriodicidadeSigla() == null) ||
-                        (this.periodicidadeSigla != null &&
-                                this.periodicidadeSigla.equals(other.getPeriodicidadeSigla()))) &&
+                ((this.periodicidade == null && other.getPeriodicidade() == null) || (this.periodicidade != null && this.periodicidade.equals(other.getPeriodicidade()))) &&
+                ((this.periodicidadeSigla == null && other.getPeriodicidadeSigla() == null) || (this.periodicidadeSigla != null && this.periodicidadeSigla.equals(other.getPeriodicidadeSigla()))) &&
                 this.possuiBloqueios == other.isPossuiBloqueios() &&
                 this.publica == other.isPublica() &&
-                ((this.shortName == null && other.getShortName() == null) ||
-                        (this.shortName != null &&
-                                this.shortName.equals(other.getShortName()))) &&
-                ((this.ultimoValor == null && other.getUltimoValor() == null) ||
-                        (this.ultimoValor != null &&
-                                this.ultimoValor.equals(other.getUltimoValor()))) &&
-                ((this.unidadePadrao == null && other.getUnidadePadrao() == null) ||
-                        (this.unidadePadrao != null &&
-                                this.unidadePadrao.equals(other.getUnidadePadrao()))) &&
-                ((this.unidadePadraoIngles == null && other.getUnidadePadraoIngles() == null) ||
-                        (this.unidadePadraoIngles != null &&
-                                this.unidadePadraoIngles.equals(other.getUnidadePadraoIngles()))) &&
+                ((this.shortName == null && other.getShortName() == null) || (this.shortName != null && this.shortName.equals(other.getShortName()))) &&
+                ((this.ultimoValor == null && other.getUltimoValor() == null) || (this.ultimoValor != null && this.ultimoValor.equals(other.getUltimoValor()))) &&
+                ((this.unidadePadrao == null && other.getUnidadePadrao() == null) || (this.unidadePadrao != null && this.unidadePadrao.equals(other.getUnidadePadrao()))) &&
+                ((this.unidadePadraoIngles == null && other.getUnidadePadraoIngles() == null) || (this.unidadePadraoIngles != null && this.unidadePadraoIngles.equals(other.getUnidadePadraoIngles()))) &&
                 this.valorDiaNaoUtil == other.isValorDiaNaoUtil() &&
-                ((this.valores == null && other.getValores() == null) ||
-                        (this.valores != null &&
-                                java.util.Arrays.equals(this.valores, other.getValores())));
+                ((this.valores == null && other.getValores() == null) || (this.valores != null && java.util.Arrays.equals(this.valores, other.getValores())));
         __equalsCalc = null;
         return _equals;
     }
@@ -706,7 +704,7 @@ public class WSSerieVO implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
+    private static final org.apache.axis.description.TypeDesc typeDesc =
             new org.apache.axis.description.TypeDesc(WSSerieVO.class, true);
 
     static {
