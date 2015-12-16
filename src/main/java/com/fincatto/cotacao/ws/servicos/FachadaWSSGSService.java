@@ -9,9 +9,7 @@ package com.fincatto.cotacao.ws.servicos;
 
 public interface FachadaWSSGSService extends javax.xml.rpc.Service {
 
-    public String getFachadaWSSGSAddress();
+    FachadaWSSGS getFachadaWSSGS() throws javax.xml.rpc.ServiceException;
 
-    public FachadaWSSGS getFachadaWSSGS() throws javax.xml.rpc.ServiceException;
-
-    public FachadaWSSGS getFachadaWSSGS(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    FachadaWSSGS getFachadaWSSGS(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }

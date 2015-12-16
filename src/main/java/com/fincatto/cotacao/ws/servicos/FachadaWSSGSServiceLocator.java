@@ -1,6 +1,5 @@
 /**
  * FachadaWSSGSServiceLocator.java
- * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -9,33 +8,14 @@ package com.fincatto.cotacao.ws.servicos;
 
 public class FachadaWSSGSServiceLocator extends org.apache.axis.client.Service implements FachadaWSSGSService {
 
+    private String FachadaWSSGS_address = "https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS";
+    private String FachadaWSSGSWSDDServiceName = "FachadaWSSGS";
+
     public FachadaWSSGSServiceLocator() {
     }
 
-    public FachadaWSSGSServiceLocator(org.apache.axis.EngineConfiguration config) {
-        super(config);
-    }
-
-    public FachadaWSSGSServiceLocator(String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
-        super(wsdlLoc, sName);
-    }
-
-    // Use to get a proxy class for FachadaWSSGS
-    private String FachadaWSSGS_address = "https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS";
-
-    public String getFachadaWSSGSAddress() {
-        return FachadaWSSGS_address;
-    }
-
-    // The WSDD service name defaults to the port name.
-    private String FachadaWSSGSWSDDServiceName = "FachadaWSSGS";
-
     public String getFachadaWSSGSWSDDServiceName() {
         return FachadaWSSGSWSDDServiceName;
-    }
-
-    public void setFachadaWSSGSWSDDServiceName(String name) {
-        FachadaWSSGSWSDDServiceName = name;
     }
 
     public FachadaWSSGS getFachadaWSSGS() throws javax.xml.rpc.ServiceException {
@@ -50,16 +30,12 @@ public class FachadaWSSGSServiceLocator extends org.apache.axis.client.Service i
 
     public FachadaWSSGS getFachadaWSSGS(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            FachadaWSSGSSoapBindingStub _stub = new FachadaWSSGSSoapBindingStub(portAddress, this);
-            _stub.setPortName(getFachadaWSSGSWSDDServiceName());
-            return _stub;
+            FachadaWSSGSSoapBindingStub stub = new FachadaWSSGSSoapBindingStub(portAddress, this);
+            stub.setPortName(getFachadaWSSGSWSDDServiceName());
+            return stub;
         } catch (org.apache.axis.AxisFault e) {
             return null;
         }
-    }
-
-    public void setFachadaWSSGSEndpointAddress(String address) {
-        FachadaWSSGS_address = address;
     }
 
     /**
@@ -112,24 +88,4 @@ public class FachadaWSSGSServiceLocator extends org.apache.axis.client.Service i
         }
         return ports.iterator();
     }
-
-    /**
-     * Set the endpoint address for the specified port name.
-     */
-    public void setEndpointAddress(String portName, String address) throws javax.xml.rpc.ServiceException {
-
-        if ("FachadaWSSGS".equals(portName)) {
-            setFachadaWSSGSEndpointAddress(address);
-        } else { // Unknown Port Name
-            throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
-        }
-    }
-
-    /**
-     * Set the endpoint address for the specified port name.
-     */
-    public void setEndpointAddress(javax.xml.namespace.QName portName, String address) throws javax.xml.rpc.ServiceException {
-        setEndpointAddress(portName.getLocalPart(), address);
-    }
-
 }

@@ -11,17 +11,17 @@ import com.fincatto.cotacao.ws.comum.WSSerieVO;
 
 public interface FachadaWSSGS extends java.rmi.Remote {
 
-    public WSSerieVO[] getValoresSeriesVO(long[] in0, String in1, String in2) throws java.rmi.RemoteException;
+    WSSerieVO[] getValoresSeriesVO(long[] in0, String in1, String in2) throws java.rmi.RemoteException;
 
-    public WSSerieVO getUltimosValoresSerieVO(long in0, long in1) throws java.rmi.RemoteException;
+    WSSerieVO getUltimosValoresSerieVO(long in0, long in1) throws java.rmi.RemoteException;
 
-    public String getValoresSeriesXML(long[] in0, String in1, String in2) throws java.rmi.RemoteException;
+    String getValoresSeriesXML(long[] in0, String in1, String in2) throws java.rmi.RemoteException;
 
-    public WSSerieVO getUltimoValorVO(long in0) throws java.rmi.RemoteException;
+    WSSerieVO getUltimoValorVO(long in0) throws java.rmi.RemoteException;
 
-    public String getUltimoValorXML(long in0) throws java.rmi.RemoteException;
+    String getUltimoValorXML(long in0) throws java.rmi.RemoteException;
 
-    public java.math.BigDecimal getValor(long in0, String in1) throws java.rmi.RemoteException;
+    java.math.BigDecimal getValor(long in0, String in1) throws java.rmi.RemoteException;
 
-    public java.math.BigDecimal getValorEspecial(long in0, String in1, String in2) throws java.rmi.RemoteException;
+    java.math.BigDecimal getValorEspecial(long in0, String in1, String in2) throws java.rmi.RemoteException;
 }

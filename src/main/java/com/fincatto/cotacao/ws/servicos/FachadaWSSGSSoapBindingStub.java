@@ -1,6 +1,5 @@
 /**
  * FachadaWSSGSSoapBindingStub.java
- * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -11,11 +10,11 @@ import com.fincatto.cotacao.ws.comum.WSSerieVO;
 import com.fincatto.cotacao.ws.comum.WSValorSerieVO;
 
 public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub implements FachadaWSSGS {
+
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
-
     static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
@@ -118,7 +117,6 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         _operations[6] = oper;
-
     }
 
     public FachadaWSSGSSoapBindingStub() throws org.apache.axis.AxisFault {
@@ -142,14 +140,6 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
         javax.xml.namespace.QName qName2;
         Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
         Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-        Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-        Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-        Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-        Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-        Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-        Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-        Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-        Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
         qName = new javax.xml.namespace.QName("http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br", "ArrayOffWSSerieVO");
         cachedSerQNames.add(qName);
         cls = WSSerieVO[].class;
@@ -190,7 +180,6 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
         qName2 = null;
         cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
         cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
-
     }
 
     protected org.apache.axis.client.Call createCall() throws java.rmi.RemoteException {
@@ -231,20 +220,15 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
                     _call.setEncodingStyle(org.apache.axis.Constants.URI_SOAP11_ENC);
                     for (int i = 0; i < cachedSerFactories.size(); ++i) {
                         Class cls = (Class) cachedSerClasses.get(i);
-                        javax.xml.namespace.QName qName =
-                                (javax.xml.namespace.QName) cachedSerQNames.get(i);
+                        javax.xml.namespace.QName qName = (javax.xml.namespace.QName) cachedSerQNames.get(i);
                         Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
-                            Class sf = (Class)
-                                    cachedSerFactories.get(i);
-                            Class df = (Class)
-                                    cachedDeserFactories.get(i);
+                            Class sf = (Class) cachedSerFactories.get(i);
+                            Class df = (Class) cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
-                            org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                    cachedSerFactories.get(i);
-                            org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                    cachedDeserFactories.get(i);
+                            org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory) cachedSerFactories.get(i);
+                            org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory) cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
@@ -472,5 +456,4 @@ public class FachadaWSSGSSoapBindingStub extends org.apache.axis.client.Stub imp
             throw axisFaultException;
         }
     }
-
 }

@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS" 
-	xmlns:apachesoap="http://xml.apache.org/xml-soap" 
-	xmlns:impl="https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS" 
-	xmlns:intf="https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS" 
-	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-	xmlns:tns1="http://DefaultNamespace" 
-	xmlns:tns2="http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br" 
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<!--WSDL created by Apache Axis version: 1.2.1
-Built on Jun 14, 2005 (09:15:57 EDT)-->
+<wsdl:definitions targetNamespace="https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS" xmlns:impl="https://www3.bcb.gov.br/wssgs/services/FachadaWSSGS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://DefaultNamespace" xmlns:tns2="http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<wsdl:types>
 		<schema targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
 			<import namespace="http://comum.ws.casosdeuso.sgs.pec.bcb.gov.br"/>
