@@ -16,8 +16,9 @@ public enum Indice {
     //indices
     IGPM(189, "IGP-M"),
     OURO_BMF(4, "Ouro BMF"),
-    SELIC(11, "Selic");
-
+    SELIC(11, "Selic"),
+	SELIC_ACUMULADA_MES(4390, "Selic Acumulada Mes"),
+	SELIC_FATOR_ACUMULADO(0, "Fator Acumulado Selic");
 
     private final long codigo;
     private final String descricao;

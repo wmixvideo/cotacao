@@ -28,7 +28,7 @@ public class WSConsulta {
     }
 
     public SortedSet<Cotacao> getCotacao(final Indice indice, final LocalDate dataInicio, final LocalDate dataFim) throws RemoteException {
-        final SortedSet<Cotacao> cotacoes = new TreeSet();
+        final SortedSet<Cotacao> cotacoes = new TreeSet<Cotacao>();
         final long[] moedas = {indice.getCodigo()};
         for (WSValorSerieVO valorSerieVO : FACHADA.getValoresSeriesVO(moedas, FORMATTER.format(dataInicio), FORMATTER.format(dataFim))[0].getValores()) {
             final LocalDate data = LocalDate.of(valorSerieVO.getAno(), valorSerieVO.getMes(), valorSerieVO.getDia());
