@@ -1,16 +1,17 @@
 package com.fincatto.cotacao.ws;
 
-import com.fincatto.cotacao.classes.Cotacao;
-import com.fincatto.cotacao.classes.Indice;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.fincatto.cotacao.classes.Cotacao;
+import com.fincatto.cotacao.classes.Indice;
 
 public class WSConsultaTest {
 
@@ -98,5 +99,13 @@ public class WSConsultaTest {
     public void testBuscaCotacaoIGPM5Anos() throws RemoteException {
         final SortedSet<Cotacao> cotacoes = new WSConsulta().getCotacao(Indice.IGPM, LocalDate.of(2010, 10, 01), LocalDate.of(2015, 9, 30));
         Assert.assertEquals(60, cotacoes.size());
+    }
+    
+    @Test
+    public void testValorTaxaSelicAcumuladaMes() throws RemoteException {
+        final Cotacao cotacao = new WSConsulta().getCotacao(Indice.SELIC_ACUMULADA_MES, LocalDate.of(2017, 6, 30));
+        final Cotacao cotacaoEsperada = new Cotacao(LocalDate.of(2017, 6, 30), Indice.SELIC_ACUMULADA_MES, new BigDecimal("0.81"));
+        Assert.assertNotNull(cotacao);
+        Assert.assertEquals(cotacaoEsperada, cotacao);
     }
 }
