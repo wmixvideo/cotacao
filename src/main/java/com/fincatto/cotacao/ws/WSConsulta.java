@@ -16,13 +16,22 @@ import java.util.TreeSet;
 public class WSConsulta {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final FachadaWSSGS FACHADA = new FachadaWSSGSProxy();
+    private static final FachadaWSSGS FACHADA        = new FachadaWSSGSProxy();
+    
+    private final WSRestConsulta wsRestConsulta = WSRestConsulta.getInstance();
 
     public Cotacao getCotacao(final Indice indice, final LocalDate data) {
+    	
         try {
+        	
+        	if (indice == Indice.SELIC_FATOR_ACUMULADO) {
+        		return wsRestConsulta.getFatorAcumuladoSelic(data.getMonthValue(), data.getYear());
+        	}
+        	
             final BigDecimal valor = FACHADA.getValor(indice.getCodigo(), FORMATTER.format(data));
             return new Cotacao(data, indice, valor);
-        } catch (RemoteException e) {
+        } 
+        catch (RemoteException e) {
             return null;
         }
     }
