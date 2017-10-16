@@ -9,7 +9,7 @@
     </parent>
   
 	<groupId>com.fincatto</groupId>
-	<artifactId>cotacao</artifactId>
+	<artifactId>cotacao-core</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Cotacao Core (original project)</name>
     

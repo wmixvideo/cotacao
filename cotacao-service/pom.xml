@@ -9,14 +9,15 @@
   
   <artifactId>cotacao-service</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>ejb</packaging>
   
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.finalName>bacen-service</project.build.finalName>
+		<ejb.fileName>bacen-service</ejb.fileName>
 		<version.ejb.plugin>3.0.0</version.ejb.plugin>
 		<version.ejb.api>3.2</version.ejb.api>
 		<wildfly.version>10.0.0.Final</wildfly.version>
+		<wildfly.plugin.version>1.2.0.Final</wildfly.plugin.version>
   </properties>	
   
   <dependencyManagement>
@@ -45,10 +46,12 @@
 	<dependency>
 		<groupId>org.jboss.xnio</groupId>
 		<artifactId>xnio-nio</artifactId>
+		<scope>runtime</scope>
 	</dependency>
 	<dependency>
 		<groupId>org.jboss</groupId>
 		<artifactId>jboss-remote-naming</artifactId>
+		<scope>provided</scope>
 	</dependency>
 	<dependency>
     	<groupId>javax.ejb</groupId>
@@ -58,7 +61,7 @@
 	</dependency>
 	<dependency>
 		<groupId>com.fincatto</groupId>
-		<artifactId>cotacao</artifactId>
+		<artifactId>cotacao-core</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</dependency>
   </dependencies>
@@ -71,34 +74,99 @@
             <plugin>
 				<groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.2.0.Final</version>
-                <configuration>
-                    <filename>${project.build.finalName}.jar</filename>
-                </configuration>
+                <version>${wildfly.plugin.version}</version>
+                <executions>
+                	<execution>
+	                    <id>deploy-cotacao-core-dependency</id>
+	                    <phase>install</phase>
+	                    <goals>
+	                        <goal>deploy-artifact</goal>
+	                    </goals>
+                	</execution>
+            	</executions>
+	            <configuration>
+	                        <project>
+	                            <dependencies>
+	                                <dependency>
+	                                    <groupId>com.fincatto</groupId>
+	                                    <artifactId>cotacao-core</artifactId>
+	                                </dependency>
+	                            </dependencies>
+	                        </project>
+	            </configuration>                 	
             </plugin>
             <plugin>
             	<groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- EJB plugin to generates EJB file as well as the associated client jar -->
-            <!-- Usage: ejb:ejb -->
+            <!-- EJB plugin configured only for Eclipse compatibility. Do not use it!  -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
                 <version>${version.ejb.plugin}</version>
                 <configuration>
-                    <ejbVersion>3.2</ejbVersion>
-                    <!-- this is false by default -->
-                    <generateClient>true</generateClient>
-                    <clientIncludes>
-                    	<clientInclude>com/tnas/cotacao/service/remote/*</clientInclude>
-                    </clientIncludes>
+                    <ejbVersion>${version.ejb.api}</ejbVersion>
                 </configuration>
             </plugin>
+            <!-- Usage: mvn:package -->
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-shade-plugin</artifactId>
+		        <version>3.1.0</version>
+		        <executions>
+          			<execution>
+          				<id>shade-ejb-service</id>
+            			<phase>package</phase>
+            			<goals>
+              				<goal>shade</goal>
+            			</goals>
+            			<configuration>
+            				<outputFile>target/${ejb.fileName}.jar</outputFile>
+            				<artifactSet>
+            					<includes>
+            						<include>com.fincatto:cotacao-core</include>
+            						<include>com.tnas:cotacao-service</include>
+            					</includes>
+            				</artifactSet>
+            			</configuration>
+          			</execution>
+          			<execution>
+          				<id>shade-ejb-client</id>
+            			<phase>package</phase>
+            			<goals>
+              				<goal>shade</goal>
+            			</goals>
+            			<configuration>
+            				<outputFile>target/${ejb.fileName}-client.jar</outputFile>
+            				<artifactSet>
+            					<includes>
+            						<include>com.fincatto:cotacao-core</include>
+            						<include>com.tnas:cotacao-service</include>
+            					</includes>
+            				</artifactSet>
+            				<filters>
+            					<filter>
+            						<artifact>com.fincatto:cotacao-core</artifact>
+            						<includes>
+            							<include>com/fincatto/cotacao/classes/*</include>
+            						</includes>
+            					</filter>
+            					<filter>
+            						<artifact>com.tnas:cotacao-service</artifact>
+            						<includes>
+            							<include>com/tnas/cotacao/service/remote/*</include>
+            						</includes>
+            					</filter>
+            				</filters>
+            			</configuration>
+          			</execution>
+        		</executions>
+      		</plugin>
         </plugins>
     </build>
     
