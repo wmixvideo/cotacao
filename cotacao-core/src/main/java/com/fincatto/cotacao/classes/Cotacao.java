@@ -1,12 +1,15 @@
 package com.fincatto.cotacao.classes;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Cotacao implements Comparable<Cotacao> {
+public class Cotacao implements Comparable<Cotacao>, Serializable {
 
-    private final Indice indice;
+	private static final long serialVersionUID = -8249823207377635602L;
+	
+	private final Indice indice;
     private final LocalDate data;
     private final BigDecimal valor;
 

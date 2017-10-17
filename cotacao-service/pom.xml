@@ -9,15 +9,19 @@
   
   <artifactId>cotacao-service</artifactId>
   <version>1.0.0</version>
-  <packaging>ejb</packaging>
+  <packaging>jar</packaging>
   
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ejb.fileName>bacen-service</ejb.fileName>
-		<version.ejb.plugin>3.0.0</version.ejb.plugin>
+		
 		<version.ejb.api>3.2</version.ejb.api>
 		<wildfly.version>10.0.0.Final</wildfly.version>
+		
 		<wildfly.plugin.version>1.2.0.Final</wildfly.plugin.version>
+		<antrun.plugin.version>1.8</antrun.plugin.version>
+		<compiler.plugin.version>3.7.0</compiler.plugin.version>
+		<shade.plugin.version>3.1.0</shade.plugin.version>
   </properties>	
   
   <dependencyManagement>
@@ -64,60 +68,38 @@
 		<artifactId>cotacao-core</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</dependency>
+	<dependency>
+	    <groupId>wsdl4j</groupId>
+	    <artifactId>wsdl4j</artifactId>
+	</dependency>
   </dependencies>
   
   <build>
-        <!-- Set the name of the deployment -->
         <plugins>
             <!-- Wildfly plugin to deploy the application -->
-            <!-- Usage: wildfly:{deploy|redeploy|undeploy} -->
+            <!-- Usage: wildfly:{{deploy|redeploy}-only|undeploy}  -->
             <plugin>
 				<groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${wildfly.plugin.version}</version>
-                <executions>
-                	<execution>
-	                    <id>deploy-cotacao-core-dependency</id>
-	                    <phase>install</phase>
-	                    <goals>
-	                        <goal>deploy-artifact</goal>
-	                    </goals>
-                	</execution>
-            	</executions>
-	            <configuration>
-	                        <project>
-	                            <dependencies>
-	                                <dependency>
-	                                    <groupId>com.fincatto</groupId>
-	                                    <artifactId>cotacao-core</artifactId>
-	                                </dependency>
-	                            </dependencies>
-	                        </project>
-	            </configuration>                 	
+                <configuration>
+                	<filename>${ejb.fileName}-${project.version}.jar</filename>
+                </configuration>
             </plugin>
             <plugin>
             	<groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
-            </plugin>
-            <!-- EJB plugin configured only for Eclipse compatibility. Do not use it!  -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>${version.ejb.plugin}</version>
-                <configuration>
-                    <ejbVersion>${version.ejb.api}</ejbVersion>
                 </configuration>
             </plugin>
             <!-- Usage: mvn:package -->
             <plugin>
             	<groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-shade-plugin</artifactId>
-		        <version>3.1.0</version>
+		        <version>${shade.plugin.version}</version>
 		        <executions>
           			<execution>
           				<id>shade-ejb-service</id>
@@ -126,11 +108,16 @@
               				<goal>shade</goal>
             			</goals>
             			<configuration>
-            				<outputFile>target/${ejb.fileName}.jar</outputFile>
+            				<outputFile>${project.build.directory}/${ejb.fileName}-${project.version}.jar</outputFile>
             				<artifactSet>
             					<includes>
             						<include>com.fincatto:cotacao-core</include>
             						<include>com.tnas:cotacao-service</include>
+            						<include>axis:axis</include>
+            						<include>commons-discovery:commons-discovery</include>
+            						<include>wsdl4j:wsdl4j</include>
+            						<include>com.sun.jersey:jersey-client</include>
+            						<include>com.sun.jersey:jersey-core</include>
             					</includes>
             				</artifactSet>
             			</configuration>
@@ -142,7 +129,7 @@
               				<goal>shade</goal>
             			</goals>
             			<configuration>
-            				<outputFile>target/${ejb.fileName}-client.jar</outputFile>
+            				<outputFile>${project.build.directory}/${ejb.fileName}-${project.version}-client.jar</outputFile>
             				<artifactSet>
             					<includes>
             						<include>com.fincatto:cotacao-core</include>
@@ -167,6 +154,25 @@
           			</execution>
         		</executions>
       		</plugin>
+      		<!-- Deleting default jar generated by maven-jar-plugin -->
+      		<plugin>
+           		<artifactId>maven-antrun-plugin</artifactId>
+           		<version>${antrun.plugin.version}</version>
+		        <executions>
+		             <execution>
+		               <phase>package</phase>
+		               <goals>
+		                 <goal>run</goal>
+		               </goals>
+		               <configuration>
+		                 <tasks>
+		                   <echo>Deleting default jar generated by maven-jar-plugin</echo>
+		                   <delete file="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
+		                 </tasks>
+		               </configuration>
+		             </execution>
+		        </executions>
+         	</plugin>
         </plugins>
     </build>
     
