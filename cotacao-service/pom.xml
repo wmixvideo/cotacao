@@ -77,13 +77,17 @@
   <build>
         <plugins>
             <!-- Wildfly plugin to deploy the application -->
-            <!-- Usage: wildfly:{{deploy|redeploy}-only|undeploy}  -->
+            <!-- Usage: wildfly:{deploy|redeploy|undeploy|start|shutdown}  -->
             <plugin>
 				<groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${wildfly.plugin.version}</version>
                 <configuration>
                 	<filename>${ejb.fileName}-${project.version}.jar</filename>
+                	<name>${ejb.fileName}-${project.version}.jar</name>
+                	<hostname>localhost</hostname>
+                	<port>9990</port>
+                	<jbossHome>C:/Servers/wildfly-10.1.0.Final</jbossHome>
                 </configuration>
             </plugin>
             <plugin>
