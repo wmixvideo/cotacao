@@ -24,7 +24,7 @@ public class BACENServiceStandaloneClient {
 		
 		// Using the JNDI name of the EJB following this pattern :
 		// "ejb:{EarName}/{ModuleName}/{DeploymentName}/{EJBClassName}!{EJBInterfaceFullyQualifiedName}"
-		BACENRemoteService bacenService = (BACENRemoteService) context.lookup("ejb:/bacen-service-1.0.0//BACENService!com.tnas.cotacao.service.remote.BACENRemoteService");
+		BACENRemoteService bacenService = (BACENRemoteService) context.lookup("ejb:bacen-service-1.0.0/cotacao-service-1.0.0//BACENService!com.tnas.cotacao.service.remote.BACENRemoteService");
 		
 	 	Cotacao cotacao = bacenService.getCotacao(Indice.SELIC_FATOR_ACUMULADO, LocalDate.of(2017, 6, 1));
 		

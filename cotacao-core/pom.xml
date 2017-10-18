@@ -14,10 +14,7 @@
 	<name>Cotacao Core (original project)</name>
     
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<axis.version>1.4</axis.version>
-		<junit.version>4.12</junit.version>
-		<log4j.version>1.2.14</log4j.version>
 		<jersey.version>1.8</jersey.version>
 		<json.version>1.1</json.version>
 		<json.impl.version>1.0.4</json.impl.version>
@@ -28,16 +25,6 @@
 			<groupId>axis</groupId>
 			<artifactId>axis</artifactId>
 			<version>${axis.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
