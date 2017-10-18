@@ -8,18 +8,22 @@
 	<name>Cotacao Parent Project</name>
     <packaging>pom</packaging>
     
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- Dependencies version -->
+		<junit.version>4.12</junit.version>
+		<log4j.version>1.2.14</log4j.version>
+		
+		<!-- Plugins version -->
+		<compiler.plugin.version>3.7.0</compiler.plugin.version>
+	</properties>
+
   	<modules>
   		<module>cotacao-service</module>
   		<module>cotacao-core</module>
   		<module>cotacao-ear</module>
   	</modules>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		<junit.version>4.12</junit.version>
-		<log4j.version>1.2.14</log4j.version>
-	</properties>
 
 	<dependencies>
 		<dependency>

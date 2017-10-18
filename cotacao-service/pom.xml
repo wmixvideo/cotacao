@@ -18,7 +18,6 @@
 		
 		<ejb.plugin.version>3.0.0</ejb.plugin.version>
 		<antrun.plugin.version>1.8</antrun.plugin.version>
-		<compiler.plugin.version>3.7.0</compiler.plugin.version>
 		<shade.plugin.version>3.1.0</shade.plugin.version>
   </properties>	
   
