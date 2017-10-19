@@ -23,6 +23,8 @@
   		<module>cotacao-service</module>
   		<module>cotacao-core</module>
   		<module>cotacao-ear</module>
+  		<module>cotacao-service-backport</module>
+  		<module>cotacao-ear-backport</module>
   	</modules>
 
 	<dependencies>

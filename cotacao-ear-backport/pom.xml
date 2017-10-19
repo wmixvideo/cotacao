@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.tnas</groupId>
+    <artifactId>cotacao</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <artifactId>cotacao-ear-backport</artifactId>
+  <packaging>ear</packaging>
+  <version>1.0.0</version>
+  
+  <properties>
+    <ear.fileName>bacen-backport-service-${project.version}</ear.fileName>
+    
+    <wildfly.plugin.version>1.2.0.Final</wildfly.plugin.version>
+  	<ear.plugin.version>2.10.1</ear.plugin.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.fincatto</groupId>
+  		<artifactId>cotacao-core</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.tnas</groupId>
+  		<artifactId>cotacao-service</artifactId>
+  		<version>1.0.0</version>
+  		<type>ejb-client</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.tnas</groupId>
+  		<artifactId>cotacao-service-backport</artifactId>
+  		<version>1.0.0</version>
+  		<type>ejb</type>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+        <!-- Wildfly plugin to deploy the application -->
+        <!-- Usage: wildfly:{run|deploy|redeploy|undeploy|start|shutdown}  -->
+        <plugin>
+				<groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${wildfly.plugin.version}</version>
+                <configuration>
+                	<filename>${ear.fileName}.ear</filename>
+                	<name>${ear.fileName}.ear</name>
+                	<hostname>localhost</hostname>
+                	<port>9990</port>
+                	<jbossHome>C:/Servers/wildfly-10.1.0.Final</jbossHome>
+                </configuration>
+        </plugin>
+  		<!-- Usage: ear:{generate-application-xml|ear} -->
+        <plugin>
+	       	<groupId>org.apache.maven.plugins</groupId>
+	       	<artifactId>maven-ear-plugin</artifactId>
+	       	<version>${ear.plugin.version}</version>
+	       	<configuration>
+	       		<finalName>${ear.fileName}</finalName>
+	       		<defaultLibBundleDir>lib</defaultLibBundleDir>
+	       		<modules>
+	       			<ejbModule>
+	       				<groupId>com.tnas</groupId>
+	       				<artifactId>cotacao-service-backport</artifactId>
+	       			</ejbModule>
+	       			<jarModule>
+	       				<groupId>com.fincatto</groupId>
+	       				<artifactId>cotacao-core</artifactId>
+	       			</jarModule>
+	       		</modules>
+	       	</configuration>
+      	</plugin>  	
+  	</plugins>
+  </build>  
+</project>
