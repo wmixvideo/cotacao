@@ -1,14 +1,15 @@
 package com.fincatto.cotacao.ws.servicos;
 
 import com.fincatto.cotacao.ws.comum.WSSerieVO;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.rpc.ServiceException;
 
 public class FachadaWSSGSProxy implements FachadaWSSGS {
 
-    private static Logger LOG = LogManager.getLogger(FachadaWSSGSProxy.class);
+    private static Logger LOG = LoggerFactory.getLogger(FachadaWSSGSProxy.class);
     private FachadaWSSGS fachadaWSSGS = null;
 
     public FachadaWSSGSProxy() {

@@ -12,6 +12,9 @@ target/
 *.iml
 dependency-reduced-pom.xml
 
+# VSCode files
+.vscode
+
 # OS generated files #
 ######################
 .DS_Store*
@@ -23,4 +26,5 @@ dependency-reduced-pom.xml
 
 # Log
 *.log
+.sts4-cache
 
