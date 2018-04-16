@@ -2,22 +2,14 @@ package com.fincatto.cotacao.ws.servicos;
 
 import com.fincatto.cotacao.ws.comum.WSSerieVO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.xml.rpc.ServiceException;
 
 public class FachadaWSSGSProxy implements FachadaWSSGS {
 
-    private static Logger LOG = LoggerFactory.getLogger(FachadaWSSGSProxy.class);
     private FachadaWSSGS fachadaWSSGS = null;
 
-    public FachadaWSSGSProxy() {
-        try {
-            fachadaWSSGS = new FachadaWSSGSServiceLocator().getFachadaWSSGS();
-        } catch (ServiceException e) {
-            LOG.error("Erro ao criar fachada do WS", e);
-        }
+    public FachadaWSSGSProxy() throws ServiceException {
+        fachadaWSSGS = new FachadaWSSGSServiceLocator().getFachadaWSSGS();
     }
 
     public WSSerieVO[] getValoresSeriesVO(long[] in0, String in1, String in2) throws java.rmi.RemoteException {
