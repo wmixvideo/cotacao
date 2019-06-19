@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -62,7 +63,7 @@ public class WSConsultaTest {
     public void testGaranteQueTodasAsMoedasEstaoOperacionais() throws ServiceException {
         final LocalDate data = LocalDate.of(2015, 9, 18);
         final WSConsulta wsConsulta = new WSConsulta();
-        for (Indice indice : Indice.values()) {
+        for (Indice indice : Arrays.asList(Indice.DOLAR_VENDA, Indice.DOLAR_COMPRA, Indice.EURO_VENDA, Indice.EURO_COMPRA)) {
             Assert.assertNotNull(wsConsulta.getCotacao(indice, data));
         }
     }
