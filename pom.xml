@@ -20,14 +20,9 @@
 		<!-- JAXWS for Java 11 -->
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>rt</artifactId>
+			<artifactId>jaxws-ri</artifactId>
 			<version>2.3.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.codehaus.woodstox</groupId>
-					<artifactId>stax2-api</artifactId>
-				</exclusion>
-			</exclusions>
+			<type>pom</type>
 		</dependency>
 
 		<!-- Axis Dependencies -->
