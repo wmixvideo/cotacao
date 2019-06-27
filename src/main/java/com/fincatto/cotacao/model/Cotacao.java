@@ -1,4 +1,4 @@
-package com.fincatto.cotacao.classes;
+package com.fincatto.cotacao.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -6,26 +6,31 @@ import java.util.Objects;
 
 public class Cotacao implements Comparable<Cotacao> {
 
-    private final Indice indice;
+    private final Moeda moeda;
     private final LocalDate data;
-    private final BigDecimal valor;
+    private final BigDecimal valorCompra, valorVenda;
 
-    public Cotacao(final LocalDate data, final Indice indice, final BigDecimal valor) {
+    public Cotacao(final LocalDate data, final Moeda moeda, final BigDecimal valorCompra, final BigDecimal valorVenda) {
         this.data = data;
-        this.indice = indice;
-        this.valor = valor;
+        this.moeda = moeda;
+        this.valorCompra = valorCompra;
+        this.valorVenda = valorVenda;
     }
 
     public LocalDate getData() {
         return data;
     }
 
-    private Indice getIndice() {
-        return indice;
+    private Moeda getMoeda() {
+        return moeda;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorCompra() {
+        return valorCompra;
+    }
+
+    public BigDecimal getValorVenda() {
+        return valorVenda;
     }
 
     @Override
@@ -33,29 +38,31 @@ public class Cotacao implements Comparable<Cotacao> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Cotacao cotacao = (Cotacao) o;
-        return indice == cotacao.indice &&
+        return moeda == cotacao.moeda &&
                 Objects.equals(data, cotacao.data) &&
-                Objects.equals(valor, cotacao.valor);
+                Objects.equals(valorCompra, cotacao.valorCompra) &&
+                Objects.equals(valorVenda, cotacao.valorVenda);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(indice, data, valor);
+        return Objects.hash(moeda, data, valorCompra, valorVenda);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cotacao{");
         sb.append("data=").append(data);
-        sb.append(", indice=").append(indice);
-        sb.append(", valor=").append(valor);
+        sb.append(", moeda=").append(moeda);
+        sb.append(", valorCompra=").append(valorCompra);
+        sb.append(", valorVenda=").append(valorVenda);
         sb.append('}');
         return sb.toString();
     }
 
     @Override
     public int compareTo(final Cotacao cotacao) {
-        final int indiceCompareResult = this.indice.getDescricao().compareTo(cotacao.getIndice().getDescricao());
+        final int indiceCompareResult = this.moeda.compareTo(cotacao.getMoeda());
         if (indiceCompareResult == 0) {
             return this.data.compareTo(cotacao.getData());
         }
