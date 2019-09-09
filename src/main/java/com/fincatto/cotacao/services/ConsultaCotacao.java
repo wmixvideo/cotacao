@@ -19,7 +19,7 @@ public class ConsultaCotacao {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 
     public Cotacao getCotacao(final Moeda moeda, final LocalDate data) throws IOException {
-        final URL url = new URL(String.format("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda='%s',dataCotacao='%s')?$top=1&$orderby=%s&$format=json&$select=cotacaoCompra,cotacaoVenda", moeda, FORMATTER.format(data), "dataHoraCotacao%20desc"));
+        final URL url = new URL(String.format("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda='%s',dataCotacao='%s')?$top=1&$orderby=dataHoraCotacao%%20desc&$format=json&$select=cotacaoCompra,cotacaoVenda", moeda, FORMATTER.format(data)));
         final URLConnection request = url.openConnection();
         request.connect();
 
