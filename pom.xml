@@ -9,7 +9,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<axis.version>1.4</axis.version>
-		<junit.version>5.7.0</junit.version>
+		<junit.version>5.7.1</junit.version>
 		<jersey.version>1.8</jersey.version>
 		<json.version>1.1</json.version>
 		<json.impl.version>1.0.4</json.impl.version>
