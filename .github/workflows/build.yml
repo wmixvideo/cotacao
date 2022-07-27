@@ -1,9 +1,9 @@
-name: "Continuous Integration"
-
+name: "Build project"
 on:
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
